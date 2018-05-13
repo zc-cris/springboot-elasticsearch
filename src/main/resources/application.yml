@@ -1,0 +1,4 @@
+spring:
+  elasticsearch:
+    jest:
+      uris: http://120.78.138.11:9200
