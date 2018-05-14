@@ -1,6 +1,8 @@
 package com.cris.springboot;
 
 import com.cris.springboot.bean.Ariticle;
+import com.cris.springboot.bean.Book;
+import com.cris.springboot.repository.BookRepository;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Index;
@@ -10,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -20,6 +23,20 @@ public class SpringbootElasticsearchApplicationTests {
 
     @Autowired
     JestClient jestClient;
+
+    @Autowired
+    BookRepository bookRepository;
+
+    @Test
+    public void test03(){
+        Book book = new Book();
+        book.setId(1);
+        book.setName("神魔");
+        book.setAuthor("血红");
+//        System.out.println(bookRepository);
+        bookRepository.index(book);
+    }
+
 
     @Test
     public void contextLoads() {
